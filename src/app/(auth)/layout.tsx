@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const navLinks = [
   { name: "Register", href: "/register" },
@@ -15,9 +16,13 @@ export default function WithAuthLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const [input, setInput] = useState("");
 
   return (
     <>
+      <div>
+        <input type="text" onChange={(e) => setInput(e.target.value)} />
+      </div>
       <div
         style={{
           display: "flex",
