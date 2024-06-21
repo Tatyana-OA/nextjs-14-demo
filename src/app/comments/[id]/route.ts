@@ -1,4 +1,5 @@
 import { comments } from "../data";
+import { redirect } from "next/navigation";
 
 // Get By id
 export async function GET(
@@ -6,7 +7,8 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   const comment = comments.find((comment) => comment.id === Number(params.id));
-  return Response.json(comment);
+
+  return comment ? Response.json(comment) : redirect("/comments");
 }
 
 export async function PATCH(
