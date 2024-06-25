@@ -7,8 +7,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./ImageSlider.css";
 import Image from "next/image";
+import { useTheme } from "../components/ThemeProvider";
 
 export default function ImageSlider() {
+  const theme = useTheme();
+  console.log(theme.colors.primary);
   const settings = {
     dots: true,
   };

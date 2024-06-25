@@ -1,5 +1,6 @@
 import { Metadata } from "next";
-
+import { createContext } from "react";
+import { ThemeProvider } from "./components/ThemeProvider";
 export const metadata: Metadata = {
   title: {
     // default for children (if not specified within them)
@@ -32,15 +33,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <header style={headerStyle}>
-          <p>HEADER</p>
-        </header>
-        {children}
-        <footer style={footerStyle}>
-          <p>FOOTER</p>
-        </footer>
-      </body>
+      <ThemeProvider>
+        <body>
+          <header style={headerStyle}>
+            <p>HEADER</p>
+          </header>
+          {children}
+          <footer style={footerStyle}>
+            <p>FOOTER</p>
+          </footer>
+        </body>
+      </ThemeProvider>
     </html>
   );
 }
